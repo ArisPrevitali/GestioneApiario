@@ -37,3 +37,16 @@ id_regina INT NOT NULL,
 id_utente INT NOT NULL,
 id_luogo INT NOT NULL
 );
+
+ALTER TABLE regina
+ADD FOREIGN KEY (id_arnia) REFERENCES arnia(id);
+ALTER TABLE annotazione
+ADD FOREIGN KEY (id_arnia) REFERENCES arnia(id);
+ALTER TABLE meteo
+ADD FOREIGN KEY (id_luogo) REFERENCES luogo(id);
+ALTER TABLE arnia
+ADD FOREIGN KEY (id_regina) REFERENCES regina(id);
+ALTER TABLE arnia
+ADD FOREIGN KEY (id_utente) REFERENCES utente(id);
+ALTER TABLE arnia
+ADD FOREIGN KEY (id_luogo) REFERENCES luogo(id);
