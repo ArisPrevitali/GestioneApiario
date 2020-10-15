@@ -16,8 +16,19 @@
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Home</h1>
-        <!--Aggiungi arnia.file-->
         <input type="button" class="button" name="addArnie" value="Aggiungi un'arnia" onclick="">
+        <!--Aggiungi arnia.file-->
+        <table>
+            <tr>
+                <th>nomecolonna (luogo)</th>
+                <th>nomecolonna (colore)</th>
+                <th>nomecolonna (note)</th>
+            </tr>
+            <tr>
+                <!--Inserire dati dal DB max 5-->
+            </tr>
+        </table>
+        
     </div>
     <?php include "footer.html"?>
 </body>
