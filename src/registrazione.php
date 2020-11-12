@@ -25,7 +25,7 @@
             <input type="password" class="textbox" name="confPass">
             <p>Captcha:</p>
             <!--Aggiungere captcha-->
-            <input type="submit" class="textbox button" name="submit" value="INVIO">
+            <input type="submit" class="textbox buttonCenter" name="submit" value="INVIO">
         </form>
     </div>
     <?php include "footer.html"?>
