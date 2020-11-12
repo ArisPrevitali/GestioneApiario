@@ -1,4 +1,5 @@
 <?php
+session_start();
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -24,7 +25,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $result = $conn->query($sql);
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
-                        header("location: /home.php?name=$nome");
+                        $_SESSION["loggedUser"] = true;
+                        $_SESSION["nameUser"] = $nome;
+                        header("location: /home.php");
+                        exit;
                     }
                 }
             }
