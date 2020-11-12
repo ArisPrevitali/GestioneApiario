@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +13,11 @@
 </head>
 <body>
     <header>
-        <p class="rightTop"><?php echo $_GET['name']; ?></p>
+        <p class="rightTop">Nome: <?php if(isset($_SESSION["nameUser"])): echo $_SESSION["nameUser"]; endif ?></p>
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Home</h1>
-        <input type="button" class="buttonCenter" name="addArnie" value="Aggiungi un'arnia" onclick="location.href = 'aggiungiArnia.php?name=<?php echo $_GET['name'] ?>'">
+        <input type="button" class="buttonCenter" name="addArnie" value="Aggiungi un'arnia" onclick="location.href = 'aggiungiArnia.php'">
         <!--Aggiungi arnia.file-->
         <table>
             <tr>
