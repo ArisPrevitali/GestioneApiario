@@ -4,7 +4,6 @@
     <title> Gestione Apiario | Previtali Aris </title>
     <link rel="icon" href="img/favicon.ico" type="image/gif">
     <link rel="stylesheet" href="CSS/general.css">
-    <link rel="stylesheet" href="CSS/home.css">
     <meta charset="utf-8">
     <meta name="description" content="Pagina aggiungi arnia gestione apiario">
     <meta name="author" content="Aris Previtali">
@@ -15,19 +14,31 @@
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Aggiungi Arnia</h1>
-        <input type="button" class="buttonCenter" name="addArnie" value="Aggiungi un'arnia" onclick="">
-        <!--Aggiungi arnia.file-->
-        <table>
-            <tr>
-                <th>Luogo</th>
-                <th>Colore</th>
-                <th>Note</th>
-            </tr>
-            <tr>
-                <!--Inserire dati dal DB max 5-->
-            </tr>
-        </table>
-        
+        <form action="PHP/arniaPHP.php?name=<?php echo $_GET['name']?>" method="POST" class="float-left">
+            <p>Luogo</p>
+            <input type="text" class="textbox" name="luogo">
+            <p>Colore</p>
+            <select class="textbox" name="color">
+                <option>Bianco</option>
+                <option>Grigio</option>
+                <option>Rosso</option>
+                <option>Verde</option>
+                <option>Giallo</option>
+                <option>Azzurro</option>
+                <option>Blu</option>
+                <option>Rosa</option>
+                <option>Viola</option>
+                <option>Marrone</option>
+                <option>Arancione</option>
+            </select>
+            <p>Note</p>
+            <input type="text" class="textbox" name="note">
+            <p>Abitata?</p>
+            <input type="checkbox" class="textbox" name="abitata">
+            <p>Anno regina</p>
+            <input type="number" class="textbox" name="annoRegina">
+            <input type="submit" class="button" name="submit" value="INVIO">
+        </form>
     </div>
     <?php include "footer.html"?>
 </body>
