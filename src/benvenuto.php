@@ -17,8 +17,8 @@
         <h1 class="title">Gestione Apiario - Benvenuto</h1>
         <h3 class="text">Come desideri continuare?</h3>
         <form action="#" method="post" class="center">
-            <input type="button" class="button" name="login" value="Ho già un account" onclick="location.href = 'login.php'">
-            <input type="button" class="button" name="registrazione" value="Non ho già un account" onclick="location.href = 'registrazione.php'">
+            <input type="button" class="buttonCenter" name="login" value="Ho già un account" onclick="location.href = 'login.php'">
+            <input type="button" class="buttonCenter" name="registrazione" value="Non ho già un account" onclick="location.href = 'registrazione.php'">
             <!-- Aggiungere foto api/apiario -->
         </form>
         <!--<img src="img/apiario.jpg" width="40%" height="10%">-->
