@@ -12,6 +12,7 @@ session_start();
     <meta name="author" content="Aris Previtali">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<?php if(isset($_SESSION["loggedUser"])): ?>
 <body>
     <header>
     </header>
@@ -45,4 +46,11 @@ session_start();
     </div>
     <?php include "footer.html"?>
 </body>
+<?php else: ?>
+<div class="body">
+    <h1 class="title center">Utente non loggato!</h1>
+    <input type="button" class="buttonCenter" name="login" value="Login" onclick="location.href = 'login.php'">
+    <input type="button" class="buttonCenter" name="registrazione" value="Registrazione" onclick="location.href = 'registrazione.php'">
+</div>
+<?php endif; ?>
 </html>
