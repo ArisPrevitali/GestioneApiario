@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Aggiungi Arnia</h1>
-        <form action="PHP/arniaPHP.php?name=<?php echo $_GET['name']?>" method="POST" class="float-left">
+        <form action="<?php if($_SESSION['loggedUser']): echo 'PHP/arniaPHP.php'; endif ?>" method="POST" class="float-left">
             <p>Luogo</p>
             <input type="text" class="textbox" name="luogo">
             <p>Colore</p>
@@ -36,7 +39,7 @@
             <p>Abitata?</p>
             <input type="checkbox" class="textbox" name="abitata">
             <p>Anno regina</p>
-            <input type="number" class="textbox" name="annoRegina">
+            <input type="date" class="textbox" name="annoRegina">
             <input type="submit" class="button" name="submit" value="INVIO">
         </form>
     </div>
