@@ -13,14 +13,14 @@
     <header>
     </header>
     <div class="body center">
-        <h1 class="title">Gestione Apiario - Registrazione</h1>
+        <h1 class="title">Gestione Apiario - Login</h1>
         <h3 class="text">Bentornato!</h3>
-        <form action="#" method="post" class="center">
+        <form action="PHP/loginPHP.php" method="post" class="center">
             <p>Nome: </p>
             <input type="text" class="textbox" name="name">
             <p class="block">Password: </p>
-            <input type="text" class="textbox" name="password">
-            <input type="submit" class="textbox button" name="submit" value="INVIO">
+            <input type="password" class="textbox" name="password">
+            <input type="submit" class="textbox buttonCenter" name="submit" value="INVIO">
         </form>
     </div>
     <?php include "footer.html"?>
