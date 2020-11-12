@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION["loggedUser"] = false;
+$_SESSION["nameUser"] = "";
+?>
 <!DOCTYPE html>
 <html>
 <head>
