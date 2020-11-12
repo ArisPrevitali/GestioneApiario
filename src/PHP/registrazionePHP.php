@@ -1,4 +1,6 @@
 <?php
+session_start();
+include "connectionMYSQL.php";
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -64,29 +66,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     echo $passErr;
     if($passVal && $nameVal && $emailVal){
         //SQL
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gestione_apiario";
-    
-        $conn = new mysqli($servername, $username, $password, $dbname);
-    
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        include "connectionMYSQL.php";
     
         $sql = "INSERT INTO utente (nome_utente, password_utente, email_utente)
             VALUES ('$name', '$pass', '$email')";
     
         if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+            header("location: /login.php");
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
         $conn->close();
-        //header("location: /login.php");
     }else{
-        //header('location: /error.php?pass='.$passVal.'&name='.$nameVal.'&email='.$emailVal.'&passSame='.$passSame);
+        header('location: /error.php?pass='.$passVal.'&name='.$nameVal.'&email='.$emailVal.'&passSame='.$passSame);
     }
 }
 ?>
