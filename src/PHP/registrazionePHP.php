@@ -78,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
         $conn->close();
     }else{
-        header('location: /error.php?pass='.$passVal.'&name='.$nameVal.'&email='.$emailVal.'&passSame='.$passSame);
+        header('location: /errorRegister.php?pass='.$passVal.'&name='.$nameVal.'&email='.$emailVal.'&passSame='.$passSame);
     }
 }
 ?>
