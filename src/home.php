@@ -16,6 +16,9 @@
 <body>
     <header>
         <p class="rightTop">Nome: <?php if(isset($_SESSION["nameUser"])): echo $_SESSION["nameUser"]; endif ?></p>
+        <form action="<?php echo 'PHP/logoutPHP.php' ?>" method="POST" class="">
+            <input type="submit" name="logout" value="LOGOUT" class="button rightTop">
+        </form>
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Home</h1>
@@ -31,7 +34,6 @@
                 <!--Inserire dati dal DB max 5-->
             </tr>
         </table>
-        
     </div>
     <?php include "footer.html"?>
 </body>
