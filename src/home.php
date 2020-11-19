@@ -22,7 +22,11 @@
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Home</h1>
-        <input type="button" class="buttonCenter" name="addArnie" value="Aggiungi un'arnia" onclick="location.href = 'aggiungiArnia.php'">
+        <div class="div-center">
+            <input type="button" class="buttonCenter" name="addArnia" value="Aggiungi un'arnia" onclick="location.href = 'aggiungiArnia.php'">
+            <input type="button" class="buttonCenter" name="modifyArnia" value="Modifica un'arnia" onclick="location.href = 'modificaArnia.php'">
+            <input type="button" class="buttonCenter" name="deleteArnia" value="Elimina un'arnia" onclick="location.href = 'eliminaArnia.php'"> 
+        </div>
         <!--Aggiungi arnia.file-->
         <table>
             <tr>
