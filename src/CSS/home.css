@@ -3,9 +3,10 @@
     position: fixed;
     top: 0px;
     left: 95%;
-    margin-top: 5px;
+    margin-top: 15px !important;
     margin-right: 15px;
     padding: 10px;
+    float: right;
 }
 .button{
     position: absolute;
