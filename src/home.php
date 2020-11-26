@@ -24,8 +24,9 @@
         <h1 class="title center">Gestione Apiario - Home</h1>
         <div class="div-center">
             <input type="button" class="buttonCenter" name="addArnia" value="Aggiungi un'arnia" onclick="location.href = 'aggiungiArnia.php'">
-            <input type="button" class="buttonCenter" name="modifyArnia" value="Modifica un'arnia" onclick="location.href = 'modificaArnia.php'">
-            <input type="button" class="buttonCenter" name="deleteArnia" value="Elimina un'arnia" onclick="location.href = 'eliminaArnia.php'"> 
+            <form action='PHP/modificaArniaPHP.php' method='POST'>
+                <input type="submit" class="buttonCenter" name="modifyArnia" value="Modifica un'arnia o elimina">
+            </form>
         </div>
         <!--Aggiungi arnia.file-->
         <table>
