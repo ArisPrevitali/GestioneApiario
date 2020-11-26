@@ -17,22 +17,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $abitataErr = false;
     $note = "";
     $errorURL = "/errorArnia.php?";
-    if($_POST['luogo'] !== " "){
+    if($_POST['luogo'] !== ""){
         $luogo = test_input($_POST['luogo']);
     }else{
         $luogoErr = true;
         $errorURL .= "luogoErr=" . $luogoErr . "&";
     }
-    if($_POST['color'] !== " "){
+    if($_POST['color'] !== ""){
         $color = test_input($_POST['color']);
     }
-    if($_POST['annoRegina'] !== " "){
+    if($_POST['annoRegina'] !== ""){
         $annoRegina = test_input($_POST['annoRegina']);
     }else{
         $annoReginaErr = true;
         $errorURL .= "annoReginaErr=" . $annoReginaErr;
     }
-    if($_POST['note'] !== " "){
+    if($_POST['note'] !== ""){
         $note = test_input($_POST['note']);
     }
     if(isset($_POST['abitata'])){
@@ -55,42 +55,43 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //aggiungere regina per l'utente
     if($annoRegina != "" && isset($_SESSION['nameUser'])){
-        $annoRegina = date_create()->format('Y-m-d');
+        $annoRegina = date_create($annoRegina)->format('Y-m-d');
         $sql = "INSERT INTO regina(anno_nascita, id_utente)
                 VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("si", $annoRegina, $id);
         $stmt->execute();
         $stmt->close();
-        $idRegina = $conn->insert_id;;
+        $idRegina = $conn->insert_id;
     }
 
     //aggiunta luogo
     if($luogo != "" && isset($_SESSION['nameUser'])){
         //controllare se esiste già
-        $sql = "INSERT INTO luogo(luogo)
+        $sql = "REPLACE INTO luogo(luogo)
                 VALUES (?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $luogo);
         $stmt->execute();
         $stmt->close();
-        $idLuogo = $conn->insert_id;
+        echo $luogo . " ";
     }
 
     //aggiunta arnia
     if(isset($_SESSION['nameUser'])){
-        if($luogo != "" && $annoRegina != "" && null !== $idRegina && null !== $idLuogo){
-            $sql = "INSERT INTO arnia(colore, testo, abitata, id_regina, id_utente, id_luogo)
+        if($luogo != "" && $annoRegina != "" && null !== $idRegina && null !== $luogo){
+            $sql = "INSERT INTO arnia(colore, testo, abitata, id_regina, id_utente, nome_luogo)
                     VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            //echo $color . " " . $note . " " . $abitata . " " . $idRegina . " " . $id . " " . $idLuogo;
-            $stmt->bind_param("ssiiii", $color, $note, $abitata, $idRegina, $id, $idLuogo);
+            echo $color . " " . $note . " " . $abitata . " " . $idRegina . " " . $id . " " . $luogo;
+            $stmt->bind_param("ssiiis", $color, $note, $abitata, $idRegina, $id, $luogo);
             $stmt->execute();
             $stmt->close();
             if($conn->insert_id === false){
                 echo $conn->error;
             }else{
-                echo "SI";
+                //header('location: ./../home.php');
+                //aggiungere nella home la nuova arnia aggiunta
             }
         }
     }
