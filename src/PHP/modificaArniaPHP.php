@@ -2,7 +2,9 @@
 session_start();
 $arrayTable = array();
 $datiArnia = array();
+$datiModifica = array();
 $_SESSION['datiArnia'] = $datiArnia;
+$_SESSION['datiModifica'] = $datiModifica;
 include "connectionMYSQL.php";
 function test_input($data) {
     $data = trim($data);
@@ -11,15 +13,25 @@ function test_input($data) {
     return $data;
 }
 
-$sqlGetIdUser = "SELECT id FROM utente
-        WHERE nome_utente = ?";
-$stmt = $conn->prepare($sqlGetIdUser);
-$stmt->bind_param("s", $_SESSION["nameUser"]);
-$stmt->execute();
-$stmt->bind_result($id);
-$stmt->fetch();
-$stmt->close();
+//ricavo id utente
+include "getUtenteLog";
 
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM arnia
+            WHERE id = (?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+        $datiModifica[] = $row;
+    }
+    print_r($datiModifica);
+    $stmt->close();
+    $_SESSION['datiModifica'] = $datiModifica;
+    header("location: ../modificaArnia.php?modifica=ON");
+}
 
 if(!isset($_SESSION['tableArnia'])){
     $sqlGetTable = "SELECT COLUMN_NAME
@@ -32,25 +44,8 @@ if(!isset($_SESSION['tableArnia'])){
             $arrayTable[] = $row['COLUMN_NAME'];
         }
         $_SESSION['tableArnia'] = $arrayTable;
-        header('location: ./../modificaArnia.php');
+        header('location: /../modificaArnia.php');
     }
 }
-$arrayresult = array();
-$sql = "SELECT * FROM arnia
-        WHERE id_utente = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()){
-    //print_r($row);
-    $arrayresult[] = $row;    
-}
-$_SESSION['datiArnia'] = $arrayresult;
-$stmt->close();
-
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-    
-}
+include "getDati.php";
 ?>
