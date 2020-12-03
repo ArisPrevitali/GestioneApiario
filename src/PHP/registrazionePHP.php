@@ -65,6 +65,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     echo $passErr;
     if($passVal && $nameVal && $emailVal){
+        $pass = md5($pass);
         //SQL
         include "connectionMYSQL.php";
     
@@ -78,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
         $conn->close();
     }else{
-        header('location: /errorRegister.php?pass='.$passVal.'&name='.$nameVal.'&email='.$emailVal.'&passSame='.$passSame);
+        header('location: /../errorRegister.php?pass='.$passVal.'&name='.$nameVal.'&email='.$emailVal.'&passSame='.$passSame);
     }
 }
 ?>
