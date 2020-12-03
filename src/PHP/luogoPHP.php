@@ -1,6 +1,7 @@
+<?php 
 //inutilizzato
 
-<?php 
+
 include "connectionMYSQL.php";
 //aggiungo il luogo tramite id dell'utente
 if(isset($id)){
@@ -15,7 +16,7 @@ if(isset($id)){
     if($lastIdLuogo===false){
         header("location: /errorLogin.php");
     }else{
-        header("location: /PHP/arniaPHP.php");
+        header("location: /arniaPHP.php");
     }
     /**if ($conn->query($sql) === TRUE) {
         //echo "New record created successfully" . "<br>";
