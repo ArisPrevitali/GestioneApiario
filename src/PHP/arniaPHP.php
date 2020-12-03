@@ -44,14 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     include "connectionMYSQL.php";
     
     //ricavo l'id dell'utente
-    $sqlGetIdUser = "SELECT id FROM utente
-            WHERE nome_utente = ?";
-    $stmt = $conn->prepare($sqlGetIdUser);
-    $stmt->bind_param("s", $_SESSION["nameUser"]);
-    $stmt->execute();
-    $stmt->bind_result($id);
-    $stmt->fetch();
-    $stmt->close();
+    include "getUtenteLog";
 
     //aggiungere regina per l'utente
     if($annoRegina != "" && isset($_SESSION['nameUser'])){
@@ -74,7 +67,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $stmt->bind_param("s", $luogo);
         $stmt->execute();
         $stmt->close();
-        echo $luogo . " ";
+        //echo $luogo . " ";
     }
 
     //aggiunta arnia
@@ -83,14 +76,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $sql = "INSERT INTO arnia(colore, testo, abitata, id_regina, id_utente, nome_luogo)
                     VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            echo $color . " " . $note . " " . $abitata . " " . $idRegina . " " . $id . " " . $luogo;
+            //echo $color . " " . $note . " " . $abitata . " " . $idRegina . " " . $id . " " . $luogo;
             $stmt->bind_param("ssiiis", $color, $note, $abitata, $idRegina, $id, $luogo);
             $stmt->execute();
             $stmt->close();
             if($conn->insert_id === false){
                 echo $conn->error;
             }else{
-                //header('location: ./../home.php');
+                header('location: ./../home.php');
                 //aggiungere nella home la nuova arnia aggiunta
             }
         }
