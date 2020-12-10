@@ -14,7 +14,7 @@
     </header>
     <div class="body center">
         <h1 class="title">Gestione Apiario - Registrazione</h1>
-        <form action="./PHP/registrazionePHP.php" method="post" class="center">
+        <form action="/PHP/registrazionePHP.php" method="post" class="center">
             <p>Nome: </p>
             <input type="text" class="textbox" name="nome">
             <p class="block">Email: </p>
