@@ -15,11 +15,13 @@ session_start();
 </head>
 <?php if(isset($_SESSION["loggedUser"])): ?>
 <body>
-    <header>
-        <p class="rightTop">Nome: <?php if(isset($_SESSION["nameUser"])): echo $_SESSION["nameUser"]; endif ?></p>
-        <form action="<?php echo 'PHP/logoutPHP.php' ?>" method="POST" class="">
-            <input type="submit" name="logout" value="LOGOUT" class="button rightTop">
-        </form>
+    <header class="head">
+        <div class=" inline-right">
+            <form action="<?php echo 'PHP/logoutPHP.php' ?>" method="POST">
+                <label for="logout-btn">Nome: <?php if(isset($_SESSION["nameUser"])): echo $_SESSION["nameUser"]; endif ?></label>
+                <input class=" logout-btn" type="submit" name="logout" value="LOGOUT" id="logout-btn">
+            </form>
+        </div>
     </header>
     <div class="body">
         <h1 class="title center">Gestione Apiario - Aggiungi Arnia</h1>
