@@ -1,6 +1,7 @@
+<?php 
 //inutilizzato
 
-<?php 
+
 include "connectionMYSQL.php";
 //aggiungo la regina tramite l'id dell'utente
 if(isset($id)){
