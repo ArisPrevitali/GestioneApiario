@@ -13,21 +13,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $pass = $_POST['password'];
         $nome = test_input($nome);
         $pass = test_input($pass);
+        $pass = md5($pass);
         $sql = "SELECT nome_utente FROM utente
-                WHERE BINARY nome_utente = '$nome'";
+                WHERE BINARY nome_utente = ?";
         include "connectionMYSQL.php";
-        $result = $conn->query($sql);
-
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $nome);
+        $stmt->execute();
+        $result = $stmt->get_result();
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $sql = "SELECT password_utente FROM utente
-                        WHERE BINARY password_utente = '$pass'";
-                $result = $conn->query($sql);
+                        WHERE BINARY password_utente = ?";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $pass);
+                $stmt->execute();
+                $result = $stmt->get_result();
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
                         $_SESSION["loggedUser"] = true;
                         $_SESSION["nameUser"] = $nome;
-                        header("location: /home.php");
+                        header("location: /../home.php");
                         exit;
                     }
                 }else{
