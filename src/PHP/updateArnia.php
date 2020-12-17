@@ -10,7 +10,7 @@ $result = $stmt->get_result();
 while($row = $result->fetch_assoc()){
     $datiModifica[] = $row;    
 }
-print_r($datiModifica);
+//print_r($datiModifica);
 $stmt->close();
 $_SESSION['datiModifica'] = $datiModifica;
 ?>
