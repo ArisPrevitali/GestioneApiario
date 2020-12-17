@@ -1,17 +1,18 @@
 <?php 
 session_start();
-$arrayTable = array();
-$datiArnia = array();
-$datiModifica = array();
-$_SESSION['datiArnia'] = $datiArnia;
-$_SESSION['datiModifica'] = $datiModifica;
-include "connectionMYSQL.php";
+//Funzione per ripulire i dati in input
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }
+$arrayTable = array();
+$datiArnia = array();
+$datiModifica = array();
+$_SESSION['datiArnia'] = $datiArnia;
+$_SESSION['datiModifica'] = $datiModifica;
+include "connectionMYSQL.php";
 
 //ricavo id utente
 include "getUtenteLog.php";
@@ -33,6 +34,7 @@ if(isset($_GET['id'])){
     header("location: ../modificaArnia.php?modifica=ON");
 }
 
+//Ricavo le i nomi delle colonne della tabella 'arnia'
 if(!isset($_SESSION['tableArnia'])){
     $sqlGetTable = "SELECT COLUMN_NAME
         FROM INFORMATION_SCHEMA.COLUMNS
