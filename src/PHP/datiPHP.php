@@ -2,10 +2,10 @@
 include "connectionMYSQL.php";
 $arrayDatiLog = array();
 //Cerco l'utente loggato
-include "getUtenteLog";
+include "getUtenteLog.php";
 
 //Dati delle sue arnie
-$sql = "SELECT nome_luogo, colore, testo FROM arnia
+$sql = "SELECT id, nome_luogo, colore, testo FROM arnia
         WHERE id_utente = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_utente);
