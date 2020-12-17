@@ -1,4 +1,5 @@
 <?php
+//Funzione per ripulire i dati in input
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
