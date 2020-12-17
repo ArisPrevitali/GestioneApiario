@@ -71,6 +71,13 @@ session_start();
                         echo "<td>";
                         echo "<a href='./aggiungiTrattamento.php'>Aggiungi</a>";
                         echo "</td>";
+                        foreach($value as $val){
+                            $id = $val;
+                            $count++;
+                            echo "<td>";
+                            echo $val;
+                            echo "</td>";
+                        }
                     }
                 }
                 ?>
