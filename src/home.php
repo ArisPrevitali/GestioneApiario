@@ -42,6 +42,8 @@ session_start();
                 <th>Luogo</th>
                 <th>Colore</th>
                 <th>Note</th>
+                <th>Aggiungi nota</th>
+                <th>Aggiungi trattamento</th>
             </tr>
             <tr>
                 <?php 
@@ -49,13 +51,26 @@ session_start();
                     foreach($_SESSION['datiLogHome'] as $value){
                         echo "<tr>";
                         $count = 0;
-                        foreach($value as $val){
-                            $id = $val;
-                            $count++;
-                            echo "<td>";
-                            echo $val;
-                            echo "</td>";
+                        foreach($value as $assoc => $val){
+                            if(stripos($assoc, "id") === false){
+                                
+                                echo "<td>";
+                                echo $val;
+                                echo "</td>";
+                            }else{
+                                if($count == 0){
+                                    $_SESSION['id_arnia_trattamento'] = $val;
+                                    $id = $_SESSION['id_arnia_trattamento'];
+                                    $count++;
+                                }
+                            }
                         }
+                        echo "<td>";
+                        echo "<a href='./aggiungiNota.php?id=" . "$id'>Aggiungi</a>";
+                        echo "</td>";
+                        echo "<td>";
+                        echo "<a href='./aggiungiTrattamento.php'>Aggiungi</a>";
+                        echo "</td>";
                     }
                 }
                 ?>
