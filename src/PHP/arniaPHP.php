@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     include "connectionMYSQL.php";
     
     //ricavo l'id dell'utente
-    include "getUtenteLog";
+    include "getUtenteLog.php";
 
     //aggiungere regina per l'utente
     if($annoRegina != "" && isset($_SESSION['nameUser'])){
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql = "INSERT INTO regina(anno_nascita, id_utente)
                 VALUES (?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $annoRegina, $id);
+        $stmt->bind_param("si", $annoRegina, $id_utente);
         $stmt->execute();
         $stmt->close();
         $idRegina = $conn->insert_id;
@@ -76,8 +76,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $sql = "INSERT INTO arnia(colore, testo, abitata, id_regina, id_utente, nome_luogo)
                     VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            //echo $color . " " . $note . " " . $abitata . " " . $idRegina . " " . $id . " " . $luogo;
-            $stmt->bind_param("ssiiis", $color, $note, $abitata, $idRegina, $id, $luogo);
+            //echo $color . " " . $note . " " . $abitata . " " . $idRegina . " " . $id_utente . " " . $luogo;
+            $stmt->bind_param("ssiiis", $color, $note, $abitata, $idRegina, $id_utente, $luogo);
             $stmt->execute();
             $stmt->close();
             if($conn->insert_id === false){
