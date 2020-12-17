@@ -1,6 +1,8 @@
 <?php
 session_start();
 include "connectionMYSQL.php";
+
+//Funzione per ripulire i dati in input
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -37,6 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $pattern = "/\W|_/";
     $pass = test_input($_POST["password"]);
     $confPass = test_input($_POST["confPass"]);
+    //Password valida
     if(!empty($pass)){
         if($pass === $confPass){
             $passSame = true;
