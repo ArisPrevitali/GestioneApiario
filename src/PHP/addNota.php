@@ -1,4 +1,5 @@
 <?php
+//Funzione per ripulire i dati in input
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -18,10 +19,10 @@ if(isset($_GET['id'])){
         $testo = test_input($_POST['testo']);
         $sql = "INSERT INTO annotazione(data_ann, testo, id_arnia)
                 VALUES (?,?,?)";
-        echo $data. $testo. $id;
+        //echo $data. $testo. $id;
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('ssi', $data, $testo, $id);
         $stmt->execute();
-        //header('location: ../home.php');
+        header('location: ../home.php');
     }
 }
