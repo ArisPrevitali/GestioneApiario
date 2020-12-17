@@ -14,7 +14,7 @@ function test_input($data) {
 }
 
 //ricavo id utente
-include "getUtenteLog";
+include "getUtenteLog.php";
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
