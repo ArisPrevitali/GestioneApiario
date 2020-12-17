@@ -1,5 +1,7 @@
 <?php
 include "connectionMYSQL.php";
+//Ricavo id_utente dal nome_utente
+//Serve per poter salvare informazioni nel DB tramite id_utente
 $sqlGetIdUser = "SELECT id FROM utente
         WHERE nome_utente = ?";
 $stmt = $conn->prepare($sqlGetIdUser);
